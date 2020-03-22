@@ -11,6 +11,8 @@ images = {
     16: 'SK',
     None: 'Flag-pirate'
 }
+
+
 class Card():
     '''
     Class Card
@@ -24,15 +26,17 @@ class Card():
         self.type = card_type
         self.num = num
         self.played = played
-'''
-Class Deck
-Create a deck of cards to be played in every round.
-Attributes:
-    - list self
-Methods:
-    - shuffle(self)
-'''
+
+
 class Deck(list):
+    '''
+    Class Deck
+    Create a deck of cards to be played in every round.
+    Attributes:
+        - list self
+    Methods:
+        - shuffle(self)
+    '''
     def __init__(self):
         # Add all kind of cards we need to play this game
         # From 1 to 13 numbers of each color
@@ -64,24 +68,22 @@ class Deck(list):
         random.shuffle(self)
 
 
-'''
-Class Player
-Create a player.
-Attributes:
-    - string name
-    - int points
-    - Card[] cards
-    - int/nan bet
-    - int won_hands
-Methods:
-    - show_cards(self)
-        Print all the cards of the player
-    - play_cards(self, nb_cards)
-        Set played a card
-'''
-
-
 class Player():
+    '''
+    Class Player
+    Create a player.
+    Attributes:
+        - string name
+        - int points
+        - Card[] cards
+        - int/nan bet
+        - int won_hands
+    Methods:
+        - show_cards(self)
+            Print all the cards of the player
+        - play_cards(self, nb_cards)
+            Set played a card
+    '''
     def __init__(self, name, id):
         self.name = name
         self.id = id
@@ -108,7 +110,7 @@ class Player():
                 while (choice != 'P' and choice != 'F'):
                     try:
                         choice = str(input('Flag (F) or pirate (P)?'))
-                    except:
+                    except Exception:
                         print('Choose a valid option P/F')
 
                 if choice == 'F':
@@ -126,22 +128,20 @@ class Player():
         self.bet = np.nan
 
 
-'''
-Class Hand
-Create a hand of cards in a round.
-Attributes:
-    - list self
-    - int dominant_col
-Methods:
-    - add_card(self, card)
-        Add a card to the hand
-    - locate_best_in_color(self, color)
-        Set played a card
-    - compute_winner(self)
-'''
-
-
 class Hand(list):
+    '''
+    Class Hand
+    Create a hand of cards in a round.
+    Attributes:
+        - list self
+        - int dominant_col
+    Methods:
+        - add_card(self, card)
+            Add a card to the hand
+        - locate_best_in_color(self, color)
+            Set played a card
+        - compute_winner(self)
+    '''
     def __init__(self):
         self.dominant_col = None
 
@@ -258,7 +258,7 @@ if __name__ == '__main__':
                    or player.bet < 0 or not isinstance(player.bet, int)):
                 try:
                     player.bet = int(input('Bet of ' + player.name + ': '))
-                except:
+                except Exception:
                     print('Please introduce a valid value ')
 
         # Play round
